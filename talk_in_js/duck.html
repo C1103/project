@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>鸭子模型</title>
+</head>
+
+<body>
+    <script>
+        // 接口 interface
+        // 鸭子王国国王招募100只鸭子，组成嘎嘎嘎叫的合唱团
+        // 只找到了99只，最后一只哪里来？
+        var duck = {
+                // 接口 方法
+                duckSinging: function() {
+                    console.log('嘎嘎嘎');
+                }
+            }
+            // 合唱团 [] 数组简写
+            // js 弱类型语言 Array
+        var chior = [];
+        // 匿名函数
+        // js 变量的类型由值决定
+        // animal 形参，真正参加的是传过来的实参
+        var joinChoir = function(animal) {
+            if (animal && typeof animal.duckSinging === 'function') {
+                chior.push(animal);
+                console.log('恭喜加入合唱团');
+                console.log('合唱团已有成员：' + chior.length);
+            } else {
+                throw new Error('并没有嘎嘎嘎的能力');
+            }
+            if (chior.length >= 100) {
+                console.log('合唱团招募成功！给国王开唱');
+            }
+        }
+        for (var i = 0; i < 99; i++) {
+            joinChoir(duck);
+        }
+
+        var chicken = {
+            // 接口的作用就来了
+            // 实现同样的方法
+            // 就可以当一只鸭来使用
+            // 接口可以让类互相使用
+            duckSinging: function() {
+                console.log('嘎嘎嘎');
+            }
+
+        }
+        joinChoir(chicken);
+
+        var dog = {
+            makeSound: function() {
+                console.log('汪汪汪');
+            }
+        }
+        joinChoir(dog);
+    </script>
+</body>
+
+</html>
