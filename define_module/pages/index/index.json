@@ -1,0 +1,5 @@
+{
+    "usingCompontents": {
+        "cpt": "../component/cpt/cpt"
+    }
+}
